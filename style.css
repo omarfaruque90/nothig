@@ -1,0 +1,155 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1a7a4c;
+  --green-dark: #146038;
+  --bg: #f4f7f5;
+  --card: #ffffff;
+  --text: #1e2a24;
+  --muted: #6b7d73;
+  --border: #dfe8e2;
+  --danger: #c0392b;
+}
+
+body {
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 90px;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  color: #fff;
+  padding: 28px 20px 22px;
+  text-align: center;
+  border-radius: 0 0 24px 24px;
+}
+
+.app-header h1 { font-size: 1.6rem; }
+.subtitle { opacity: 0.9; font-size: 0.9rem; margin-top: 6px; }
+
+.container { max-width: 640px; margin: 0 auto; padding: 16px; }
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.card .label { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; }
+.card .value { font-size: 1.15rem; font-weight: 700; color: var(--green-dark); }
+
+.toolbar { margin: 8px 0 16px; }
+#searchInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.toolbar-buttons { display: flex; gap: 10px; }
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.btn.primary { background: var(--green); color: #fff; }
+.btn.primary:active { background: var(--green-dark); }
+.btn.secondary { background: #e8efeb; color: var(--text); }
+.btn.danger { background: #fdecea; color: var(--danger); flex: 0; }
+
+.chart-section, .entries-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.chart-section h2, .entries-section h2 { font-size: 1.05rem; margin-bottom: 12px; }
+
+.chart-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 0.9rem; }
+.chart-row .cat { width: 90px; flex-shrink: 0; }
+.chart-row .bar-wrap { flex: 1; background: #eef3f0; border-radius: 8px; height: 18px; overflow: hidden; }
+.chart-row .bar { height: 100%; background: var(--green); border-radius: 8px; }
+.chart-row .amt { width: 90px; text-align: right; font-weight: 600; }
+
+.entries { display: flex; flex-direction: column; gap: 10px; }
+
+.entry {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+.entry-top { display: flex; justify-content: space-between; align-items: center; }
+.entry-place { font-weight: 700; }
+.entry-amount { font-weight: 700; color: var(--green-dark); }
+.entry-meta { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.entry-note { font-size: 0.9rem; margin-top: 6px; }
+.entry-actions { display: flex; gap: 8px; margin-top: 10px; }
+.entry-actions .btn { padding: 8px 10px; font-size: 0.85rem; }
+
+.empty { text-align: center; color: var(--muted); padding: 20px 0; }
+
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 50;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #fff;
+  width: 100%; max-width: 640px;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  max-height: 92vh; overflow-y: auto;
+}
+.modal-content h2 { margin-bottom: 14px; }
+.modal-content label { display: block; margin-bottom: 12px; font-size: 0.95rem; }
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%; margin-top: 6px;
+  padding: 11px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  font-size: 1rem; font-family: inherit;
+}
+.modal-actions { display: flex; gap: 10px; margin-top: 6px; }
+
+.fab {
+  position: fixed;
+  right: 18px; bottom: calc(18px + env(safe-area-inset-bottom));
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--green); color: #fff;
+  font-size: 2rem; border: none; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(26,122,76,0.4);
+  z-index: 40;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+
+@media (min-width: 700px) {
+  .modal { align-items: center; }
+  .modal-content { border-radius: 20px; }
+}

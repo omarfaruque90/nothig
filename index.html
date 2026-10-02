@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>বিনিয়োগ খাতা</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a7a4c">
+</head>
+<body>
+<header class="app-header">
+  <h1>💰 বিনিয়োগ খাতা</h1>
+  <p class="subtitle">কোথায় কত টাকা invest করছো — সব হিসাব এক জায়গায়</p>
+</header>
+
+<main class="container">
+  <section class="summary-cards">
+    <div class="card total">
+      <span class="label">মোট বিনিয়োগ</span>
+      <span class="value" id="totalAmount">৳০</span>
+    </div>
+    <div class="card month">
+      <span class="label">এই মাসে</span>
+      <span class="value" id="monthAmount">৳০</span>
+    </div>
+    <div class="card count">
+      <span class="label">মোট এন্ট্রি</span>
+      <span class="value" id="entryCount">০</span>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <input type="search" id="searchInput" placeholder="🔍 খুঁজুন (জায়গা, ক্যাটাগরি, নোট...)">
+    <div class="toolbar-buttons">
+      <button id="addBtn" class="btn primary">+ নতুন এন্ট্রি</button>
+      <button id="csvBtn" class="btn secondary">⬇ CSV ডাউনলোড</button>
+    </div>
+  </section>
+
+  <section class="chart-section">
+    <h2>খাতভিত্তিক হিসাব</h2>
+    <div id="categoryChart" class="chart"></div>
+  </section>
+
+  <section class="entries-section">
+    <h2>সব এন্ট্রি</h2>
+    <div id="entriesList" class="entries"></div>
+    <p id="emptyState" class="empty">এখনো কোনো এন্ট্রি নেই। উপরে "+ নতুন এন্ট্রি" চাপ দিয়ে শুরু করো।</p>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle">নতুন এন্ট্রি</h2>
+    <form id="entryForm">
+      <label>কোথায় invest করছো *
+        <input type="text" id="place" required placeholder="যেমন: সঞ্চয়পত্র, শেয়ার বাজার...">
+      </label>
+      <label>টাকার পরিমাণ (৳) *
+        <input type="number" id="amount" required min="0" step="any" placeholder="যেমন: 5000">
+      </label>
+      <label>তারিখ *
+        <input type="date" id="date" required>
+      </label>
+      <label>ক্যাটাগরি
+        <select id="category">
+          <option value="সঞ্চয়">সঞ্চয়</option>
+          <option value="শেয়ার">শেয়ার</option>
+          <option value="ব্যবসা">ব্যবসা</option>
+          <option value="জমি">জমি</option>
+          <option value="অন্যান্য">অন্যান্য</option>
+        </select>
+      </label>
+      <label>নোট
+        <textarea id="note" rows="3" placeholder="কিছু মনে রাখার মতো থাকলে লিখো..."></textarea>
+      </label>
+      <div class="modal-actions">
+        <button type="submit" class="btn primary">সংরক্ষণ</button>
+        <button type="button" id="cancelBtn" class="btn secondary">বাতিল</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button id="fabBtn" class="fab" aria-label="নতুন এন্ট্রি">+</button>
+
+<script src="app.js"></script>
+</body>
+</html>
